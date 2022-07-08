@@ -1,0 +1,5 @@
+eu/giuse/inventorylib/workloads/WorkloadOpenInv.class
+eu/giuse/inventorylib/InventoryBuilder.class
+eu/giuse/inventorylib/ButtonBuilder.class
+eu/giuse/inventorylib/workloads/WorkloadClickEvent.class
+eu/giuse/inventorylib/workloads/WorkloadCloseInv.class
