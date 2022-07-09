@@ -30,12 +30,9 @@ public class InventoryBuilder implements Listener {
     private final String name;
     @Getter
     private final HashMap<Integer, Inventory> inventoryHash = new HashMap<>();
-
     @Getter
     private final ArrayList<ButtonBuilder> buttonBuilders = new ArrayList<>();
     @Getter private final int nPage;
-
-    @Setter private boolean openInvAsync, closeInvAsync;
     @Setter
     private WorkloadOpenInv workloadOpenInv;
     @Setter
