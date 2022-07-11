@@ -97,14 +97,14 @@ public class InventoryBuilder implements Listener {
     public void onOpen(InventoryOpenEvent e) {
         if (e.getView().getTitle().contains(name.replace("%page%",""))) {
             if (!pageCounter.containsKey(e.getPlayer().getUniqueId())) pageCounter.put(e.getPlayer().getUniqueId(), 1);
-            if (workloadOpenInv != null) worker.executeProcess(CompletableFuture.supplyAsync(() -> () -> workloadOpenInv.compute(e)), true);
+            if (workloadOpenInv != null) worker.executeProcess(() -> workloadOpenInv.compute(e), true);
         }
     }
 
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         if (e.getView().getTitle().contains(name.replace("%page%",""))) {
-            if (workloadCloseInv != null)  worker.executeProcess(CompletableFuture.supplyAsync(() -> () -> workloadCloseInv.compute(e)), true);
+            if (workloadCloseInv != null)  worker.executeProcess(() -> workloadCloseInv.compute(e), true);
         }
     }
 }

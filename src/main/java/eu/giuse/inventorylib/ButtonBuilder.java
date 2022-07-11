@@ -18,7 +18,6 @@ public class ButtonBuilder implements Listener {
     private final InventoryBuilder inventoryBuilder;
     private final int position;
     private final int page;
-
     private final ItemStack itemStack;
     @Setter private WorkloadClickEvent event;
     @Setter private boolean async;
@@ -30,7 +29,7 @@ public class ButtonBuilder implements Listener {
             if (nextPage && inventoryBuilder.getNPage() > 1) inventoryBuilder.nextPage((Player) inventoryClickEvent.getWhoClicked());
             if (previousPage&& inventoryBuilder.getNPage() >1) inventoryBuilder.previousPage((Player) inventoryClickEvent.getWhoClicked());
             if(eventCancelled) inventoryClickEvent.setCancelled(true);
-            if(event != null) worker.executeProcess(CompletableFuture.supplyAsync(() -> () -> event.compute(inventoryClickEvent)), async);
+            if(event != null) worker.executeProcess(() -> event.compute(inventoryClickEvent), async);
         }
     }
 }
