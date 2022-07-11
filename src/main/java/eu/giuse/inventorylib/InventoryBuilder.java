@@ -30,12 +30,9 @@ public class InventoryBuilder implements Listener {
     private final String name;
     @Getter
     private final HashMap<Integer, Inventory> inventoryHash = new HashMap<>();
-
     @Getter
     private final ArrayList<ButtonBuilder> buttonBuilders = new ArrayList<>();
     @Getter private final int nPage;
-
-    @Setter private boolean openInvAsync, closeInvAsync;
     @Setter
     private WorkloadOpenInv workloadOpenInv;
     @Setter
@@ -105,6 +102,7 @@ public class InventoryBuilder implements Listener {
     public void onClose(InventoryCloseEvent e) {
         if (e.getView().getTitle().contains(name.replace("%page%",""))) {
             if (workloadCloseInv != null)  worker.executeProcess(() -> workloadCloseInv.compute(e), true);
+            if (workloadCloseInv != null)  Worker.executeProcess(CompletableFuture.supplyAsync(() -> () -> workloadCloseInv.compute(e)), true);
         }
     }
 }
