@@ -102,7 +102,7 @@ public class InventoryBuilder implements Listener {
     public void onClose(InventoryCloseEvent e) {
         if (e.getView().getTitle().contains(name.replace("%page%",""))) {
             if (workloadCloseInv != null)  worker.executeProcess(() -> workloadCloseInv.compute(e), true);
-            if (workloadCloseInv != null)  Worker.executeProcess(CompletableFuture.supplyAsync(() -> () -> workloadCloseInv.compute(e)), true);
+            if (workloadCloseInv != null)  worker.executeProcess(() -> workloadCloseInv.compute(e), true);
         }
     }
 }
